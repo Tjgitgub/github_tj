@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:47:43
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:35:04
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:00:22
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:51:08
  */
 
 
@@ -144,9 +144,9 @@ BEGIN -- stg_dl_tgt
 	)
 	SELECT 
 		  UPPER(ENCODE(DIGEST(  'moto_sales_scn01' || '#' || COALESCE("find_bk_fk1"."national_person_id_bk","mex_src"."key_attribute_varchar")
-			|| '#' || COALESCE("find_bk_fk2"."street_name_bk","mex_src"."key_attribute_varchar")|| '#' ||  COALESCE("find_bk_fk2"."street_number_bk","mex_src"."key_attribute_numeric")|| '#' ||  COALESCE("find_bk_fk2"."postal_code_bk","mex_src"."key_attribute_varchar")|| '#' ||  COALESCE("find_bk_fk2"."city_bk","mex_src"."key_attribute_varchar")|| '#'  ,'MD5'),'HEX')) AS "lnd_cust_addresses_hkey"
+			||'#' || COALESCE("find_bk_fk2"."street_name_bk","mex_src"."key_attribute_varchar")|| '#' ||  COALESCE("find_bk_fk2"."street_number_bk","mex_src"."key_attribute_numeric")|| '#' ||  COALESCE("find_bk_fk2"."postal_code_bk","mex_src"."key_attribute_varchar")|| '#' ||  COALESCE("find_bk_fk2"."city_bk","mex_src"."key_attribute_varchar")|| '#'  ,'MD5'),'HEX')) AS "lnd_cust_addresses_hkey"
 		, UPPER(ENCODE(DIGEST( 'moto_sales_scn01' || '#' || COALESCE("find_bk_fk1"."national_person_id_bk","mex_src"."key_attribute_varchar")
-			|| '#' ,'MD5'),'HEX')) AS "customers_hkey"
+			||'#' ,'MD5'),'HEX')) AS "customers_hkey"
 		, UPPER(ENCODE(DIGEST( COALESCE("find_bk_fk2"."street_name_bk","mex_src"."key_attribute_varchar")|| '#' ||  COALESCE("find_bk_fk2"."street_number_bk",
 			"mex_src"."key_attribute_numeric")|| '#' ||  COALESCE("find_bk_fk2"."postal_code_bk","mex_src"."key_attribute_varchar")|| '#' ||  COALESCE("find_bk_fk2"."city_bk","mex_src"."key_attribute_varchar")|| '#' ,'MD5'),'HEX')) AS "addresses_hkey"
 		, "ext_src"."load_date" AS "load_date"

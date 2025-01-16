@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -150,7 +150,7 @@ BEGIN -- stg_dl_tgt
 			, UPPER(ENCODE(DIGEST( COALESCE("find_bk_fk1"."channel_code_bk","mex_src"."key_attribute_varchar")|| '#' ,
 				'MD5'),'HEX')) AS "channels_hkey"
 			, UPPER(ENCODE(DIGEST( 'moto_mktg_scn01' || '#' || COALESCE("find_bk_fk2"."product_cc_bk","mex_src"."key_attribute_numeric")
-				|| '#' ||  COALESCE("find_bk_fk2"."product_et_code_bk","mex_src"."key_attribute_character")|| '#' ||  COALESCE("find_bk_fk2"."product_part_code_bk","mex_src"."key_attribute_varchar")|| '#' ,'MD5'),'HEX')) AS "products_hkey"
+				||'#' ||  COALESCE("find_bk_fk2"."product_et_code_bk","mex_src"."key_attribute_character")|| '#' ||  COALESCE("find_bk_fk2"."product_part_code_bk","mex_src"."key_attribute_varchar")|| '#' ,'MD5'),'HEX')) AS "products_hkey"
 			, UPPER(ENCODE(DIGEST( "ext_src"."campaign_code_fk_campaignstartdate_bk" || '#' ||  "ext_src"."campaign_start_date_fk_campaignstartdate_bk" || 
 				'#' ,'MD5'),'HEX')) AS "campaigns_hkey"
 			, "ext_src"."load_date" AS "load_date"
@@ -171,7 +171,7 @@ BEGIN -- stg_dl_tgt
 			, "ext_src"."region_seq" AS "region_seq"
 			, "ext_src"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "ext_src"."error_code_camp_moto_chan_region" = 2 THEN 2 WHEN "ext_src"."error_code_camp_moto_chan_region" =
-				- 1 THEN 0 WHEN  "find_bk_fk1"."channel_id" IS NULL OR "find_bk_fk2"."motorcycle_id" IS NULL  THEN "ext_src"."error_code_camp_moto_chan_region" ELSE 0 END AS "error_code_camp_moto_chan_region"
+				- 1 THEN 0 WHEN"find_bk_fk1"."channel_id" IS NULL OR "find_bk_fk2"."motorcycle_id" IS NULL  THEN "ext_src"."error_code_camp_moto_chan_region" ELSE 0 END AS "error_code_camp_moto_chan_region"
 		FROM "moto_mktg_scn01_ext"."camp_moto_chan_region" "ext_src"
 		INNER JOIN "moto_mktg_scn01_mtd"."mtd_exception_records" "mex_src" ON  "mex_src"."record_type" = 'U'
 		LEFT OUTER JOIN "find_bk_fk1" "find_bk_fk1" ON  "ext_src"."channel_id" = "find_bk_fk1"."channel_id"

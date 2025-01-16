@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -110,7 +110,7 @@ BEGIN -- stg_dl_tgt
 			"mex_src"."key_attribute_varchar")|| '#' ||  COALESCE("find_bk_fk2"."birthdate_bk","mex_src"."key_attribute_date")|| '#' ||  COALESCE("find_bk_fk2"."gender_bk","mex_src"."key_attribute_character")|| '#' ||  COALESCE("find_bk_fk2"."party_type_code_bk","mex_src"."key_attribute_character")|| '#' || "ext_src"."campaign_code_fk_campaignstartdate_bk" || '#' ||  "ext_src"."campaign_start_date_fk_campaignstartdate_bk" || '#'  ,'MD5'),'HEX')) AS "lnd_camp_cust_cont_hkey"
 		, UPPER(ENCODE(DIGEST( "ext_src"."contact_id_fk_contactid_bk" || '#' ,'MD5'),'HEX')) AS "contacts_hkey"
 		, UPPER(ENCODE(DIGEST( 'moto_mktg_scn01' || '#' || COALESCE("find_bk_fk2"."name_bk","mex_src"."key_attribute_varchar")
-			|| '#' ||  COALESCE("find_bk_fk2"."birthdate_bk","mex_src"."key_attribute_date")|| '#' ||  COALESCE("find_bk_fk2"."gender_bk","mex_src"."key_attribute_character")|| '#' ||  COALESCE("find_bk_fk2"."party_type_code_bk","mex_src"."key_attribute_character")|| '#' ,'MD5'),'HEX')) AS "customers_hkey"
+			||'#' ||  COALESCE("find_bk_fk2"."birthdate_bk","mex_src"."key_attribute_date")|| '#' ||  COALESCE("find_bk_fk2"."gender_bk","mex_src"."key_attribute_character")|| '#' ||  COALESCE("find_bk_fk2"."party_type_code_bk","mex_src"."key_attribute_character")|| '#' ,'MD5'),'HEX')) AS "customers_hkey"
 		, UPPER(ENCODE(DIGEST( "ext_src"."campaign_code_fk_campaignstartdate_bk" || '#' ||  "ext_src"."campaign_start_date_fk_campaignstartdate_bk" || 
 			'#' ,'MD5'),'HEX')) AS "campaigns_hkey"
 		, "ext_src"."load_date" AS "load_date"

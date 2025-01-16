@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -49,7 +49,7 @@ BEGIN -- ext_tgt
 		SELECT 
 			  "lci_src"."load_cycle_id" AS "load_cycle_id"
 			, CURRENT_TIMESTAMP + row_number() over (PARTITION BY  "tdfv_src"."channel_id" ,  "tdfv_src"."campaign_code" ,
-				  "tdfv_src"."campaign_start_date" ,  "tdfv_src"."from_date"  ORDER BY  "tdfv_src"."trans_timestamp") * interval'2 microsecond'   AS "load_date"
+				"tdfv_src"."campaign_start_date" ,  "tdfv_src"."from_date"  ORDER BY  "tdfv_src"."trans_timestamp") * interval'2 microsecond'   AS "load_date"
 			, "tdfv_src"."trans_timestamp" AS "trans_timestamp"
 			, COALESCE("tdfv_src"."operation","mex_src"."attribute_varchar") AS "operation"
 			, "tdfv_src"."record_type" AS "record_type"
@@ -66,20 +66,20 @@ BEGIN -- ext_tgt
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."to_date" = TO_TIMESTAMP('01/01/1970 00:00:00', 
 				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_to_date"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."valid_from_date" = TO_TIMESTAMP('01/01/1970 00:00:00',
-				 'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_valid_from_date"
+				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_valid_from_date"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."valid_to_date" = TO_TIMESTAMP('01/01/1970 00:00:00', 
 				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_valid_to_date"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."update_timestamp" = TO_TIMESTAMP('01/01/1970 00:00:00',
-				 'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_update_timestamp"
+				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_update_timestamp"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."motorcycle_name" = 'unchanged'::text THEN 1 ELSE 0 END AS "nc_motorcycle_name"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."to_date" = TO_TIMESTAMP('01/01/1970 00:00:00', 
 				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_to_date"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."valid_from_date" = TO_TIMESTAMP('01/01/1970 00:00:00',
-				 'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_valid_from_date"
+				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_valid_from_date"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."valid_to_date" = TO_TIMESTAMP('01/01/1970 00:00:00', 
 				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_valid_to_date"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."update_timestamp" = TO_TIMESTAMP('01/01/1970 00:00:00',
-				 'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_update_timestamp"
+				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_update_timestamp"
 		FROM "moto_mktg_scn01_dfv"."vw_camp_moto_channel" "tdfv_src"
 		INNER JOIN "moto_mktg_scn01_mtd"."load_cycle_info" "lci_src" ON  1 = 1
 		INNER JOIN "moto_mktg_scn01_mtd"."mtd_exception_records" "mex_src" ON  1 = 1
@@ -103,15 +103,15 @@ BEGIN -- ext_tgt
 			, "calculate_variables"."valid_to_date" AS "valid_to_date"
 			, "calculate_variables"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_motorcycle_name")
-				OVER(PARTITION BY "calculate_variables"."channel_id","calculate_variables"."campaign_code","calculate_variables"."campaign_start_date","calculate_variables"."from_date" ORDER BY "calculate_variables"."load_date")END AS "ch_index_motorcycle_name"
+				OVER(PARTITION BY"calculate_variables"."channel_id","calculate_variables"."campaign_code","calculate_variables"."campaign_start_date","calculate_variables"."from_date" ORDER BY "calculate_variables"."load_date")END AS "ch_index_motorcycle_name"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_to_date")
-				OVER(PARTITION BY "calculate_variables"."channel_id","calculate_variables"."campaign_code","calculate_variables"."campaign_start_date","calculate_variables"."from_date" ORDER BY "calculate_variables"."load_date")END AS "ch_index_to_date"
+				OVER(PARTITION BY"calculate_variables"."channel_id","calculate_variables"."campaign_code","calculate_variables"."campaign_start_date","calculate_variables"."from_date" ORDER BY "calculate_variables"."load_date")END AS "ch_index_to_date"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_valid_from_date")
-				OVER(PARTITION BY "calculate_variables"."channel_id","calculate_variables"."campaign_code","calculate_variables"."campaign_start_date","calculate_variables"."from_date" ORDER BY "calculate_variables"."load_date")END AS "ch_index_valid_from_date"
+				OVER(PARTITION BY"calculate_variables"."channel_id","calculate_variables"."campaign_code","calculate_variables"."campaign_start_date","calculate_variables"."from_date" ORDER BY "calculate_variables"."load_date")END AS "ch_index_valid_from_date"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_valid_to_date")
-				OVER(PARTITION BY "calculate_variables"."channel_id","calculate_variables"."campaign_code","calculate_variables"."campaign_start_date","calculate_variables"."from_date" ORDER BY "calculate_variables"."load_date")END AS "ch_index_valid_to_date"
+				OVER(PARTITION BY"calculate_variables"."channel_id","calculate_variables"."campaign_code","calculate_variables"."campaign_start_date","calculate_variables"."from_date" ORDER BY "calculate_variables"."load_date")END AS "ch_index_valid_to_date"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_update_timestamp")
-				OVER(PARTITION BY "calculate_variables"."channel_id","calculate_variables"."campaign_code","calculate_variables"."campaign_start_date","calculate_variables"."from_date" ORDER BY "calculate_variables"."load_date")END AS "ch_index_update_timestamp"
+				OVER(PARTITION BY"calculate_variables"."channel_id","calculate_variables"."campaign_code","calculate_variables"."campaign_start_date","calculate_variables"."from_date" ORDER BY "calculate_variables"."load_date")END AS "ch_index_update_timestamp"
 			, "calculate_variables"."nc_motorcycle_name" AS "nc_motorcycle_name"
 			, "calculate_variables"."nc_to_date" AS "nc_to_date"
 			, "calculate_variables"."nc_valid_from_date" AS "nc_valid_from_date"
@@ -152,7 +152,7 @@ BEGIN -- ext_tgt
 			, "change_index"."trans_timestamp" AS "trans_timestamp"
 			, "change_index"."operation" AS "operation"
 			, CASE WHEN "change_index"."operation" = 'I' THEN 1 WHEN "change_index"."operation" = 'U' THEN 2 WHEN "change_index"."operation" =
-				 'D' THEN 3 ELSE 9999 END AS "order_operation"
+				'D' THEN 3 ELSE 9999 END AS "order_operation"
 			, "change_index"."record_type" AS "record_type"
 			, "change_index"."channel_id" AS "channel_id"
 			, "change_index"."campaign_code" AS "campaign_code"
@@ -164,15 +164,15 @@ BEGIN -- ext_tgt
 			, "change_index"."valid_to_date" AS "valid_to_date"
 			, "change_index"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "change_index"."nc_motorcycle_name" = 0 THEN 0 ELSE SUM("change_index"."nc_motorcycle_name")
-				OVER(PARTITION BY "change_index"."channel_id","change_index"."campaign_code","change_index"."campaign_start_date","change_index"."from_date","change_index"."ch_index_motorcycle_name" ORDER BY "change_index"."load_date")END AS "lag_index_motorcycle_name"
+				OVER(PARTITION BY"change_index"."channel_id","change_index"."campaign_code","change_index"."campaign_start_date","change_index"."from_date","change_index"."ch_index_motorcycle_name" ORDER BY "change_index"."load_date")END AS "lag_index_motorcycle_name"
 			, CASE WHEN "change_index"."nc_to_date" = 0 THEN 0 ELSE SUM("change_index"."nc_to_date")OVER(PARTITION BY "change_index"."channel_id",
 				"change_index"."campaign_code","change_index"."campaign_start_date","change_index"."from_date","change_index"."ch_index_to_date" ORDER BY "change_index"."load_date")END AS "lag_index_to_date"
 			, CASE WHEN "change_index"."nc_valid_from_date" = 0 THEN 0 ELSE SUM("change_index"."nc_valid_from_date")
-				OVER(PARTITION BY "change_index"."channel_id","change_index"."campaign_code","change_index"."campaign_start_date","change_index"."from_date","change_index"."ch_index_valid_from_date" ORDER BY "change_index"."load_date")END AS "lag_index_valid_from_date"
+				OVER(PARTITION BY"change_index"."channel_id","change_index"."campaign_code","change_index"."campaign_start_date","change_index"."from_date","change_index"."ch_index_valid_from_date" ORDER BY "change_index"."load_date")END AS "lag_index_valid_from_date"
 			, CASE WHEN "change_index"."nc_valid_to_date" = 0 THEN 0 ELSE SUM("change_index"."nc_valid_to_date")
-				OVER(PARTITION BY "change_index"."channel_id","change_index"."campaign_code","change_index"."campaign_start_date","change_index"."from_date","change_index"."ch_index_valid_to_date" ORDER BY "change_index"."load_date")END AS "lag_index_valid_to_date"
+				OVER(PARTITION BY"change_index"."channel_id","change_index"."campaign_code","change_index"."campaign_start_date","change_index"."from_date","change_index"."ch_index_valid_to_date" ORDER BY "change_index"."load_date")END AS "lag_index_valid_to_date"
 			, CASE WHEN "change_index"."nc_update_timestamp" = 0 THEN 0 ELSE SUM("change_index"."nc_update_timestamp")
-				OVER(PARTITION BY "change_index"."channel_id","change_index"."campaign_code","change_index"."campaign_start_date","change_index"."from_date","change_index"."ch_index_update_timestamp" ORDER BY "change_index"."load_date")END AS "lag_index_update_timestamp"
+				OVER(PARTITION BY"change_index"."channel_id","change_index"."campaign_code","change_index"."campaign_start_date","change_index"."from_date","change_index"."ch_index_update_timestamp" ORDER BY "change_index"."load_date")END AS "lag_index_update_timestamp"
 			, 1 AS "error_code_camp_moto_channel"
 		FROM "change_index" "change_index"
 		UNION ALL 
@@ -241,15 +241,15 @@ BEGIN -- ext_tgt
 			, "create_set_nc_values"."campaign_start_date" AS "campaign_start_date"
 			, "create_set_nc_values"."from_date" AS "from_date"
 			, LAG("create_set_nc_values"."motorcycle_name", "create_set_nc_values"."lag_index_motorcycle_name"::int)
-				OVER(PARTITION BY "create_set_nc_values"."channel_id","create_set_nc_values"."campaign_code","create_set_nc_values"."campaign_start_date","create_set_nc_values"."from_date" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "motorcycle_name"
+				OVER(PARTITION BY"create_set_nc_values"."channel_id","create_set_nc_values"."campaign_code","create_set_nc_values"."campaign_start_date","create_set_nc_values"."from_date" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "motorcycle_name"
 			, LAG("create_set_nc_values"."to_date", "create_set_nc_values"."lag_index_to_date"::int)OVER(PARTITION BY "create_set_nc_values"."channel_id",
 				"create_set_nc_values"."campaign_code","create_set_nc_values"."campaign_start_date","create_set_nc_values"."from_date" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "to_date"
 			, LAG("create_set_nc_values"."valid_from_date", "create_set_nc_values"."lag_index_valid_from_date"::int)
-				OVER(PARTITION BY "create_set_nc_values"."channel_id","create_set_nc_values"."campaign_code","create_set_nc_values"."campaign_start_date","create_set_nc_values"."from_date" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "valid_from_date"
+				OVER(PARTITION BY"create_set_nc_values"."channel_id","create_set_nc_values"."campaign_code","create_set_nc_values"."campaign_start_date","create_set_nc_values"."from_date" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "valid_from_date"
 			, LAG("create_set_nc_values"."valid_to_date", "create_set_nc_values"."lag_index_valid_to_date"::int)
-				OVER(PARTITION BY "create_set_nc_values"."channel_id","create_set_nc_values"."campaign_code","create_set_nc_values"."campaign_start_date","create_set_nc_values"."from_date" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "valid_to_date"
+				OVER(PARTITION BY"create_set_nc_values"."channel_id","create_set_nc_values"."campaign_code","create_set_nc_values"."campaign_start_date","create_set_nc_values"."from_date" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "valid_to_date"
 			, LAG("create_set_nc_values"."update_timestamp", "create_set_nc_values"."lag_index_update_timestamp"::int)
-				OVER(PARTITION BY "create_set_nc_values"."channel_id","create_set_nc_values"."campaign_code","create_set_nc_values"."campaign_start_date","create_set_nc_values"."from_date" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "update_timestamp"
+				OVER(PARTITION BY"create_set_nc_values"."channel_id","create_set_nc_values"."campaign_code","create_set_nc_values"."campaign_start_date","create_set_nc_values"."from_date" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "update_timestamp"
 			, "create_set_nc_values"."error_code_camp_moto_channel" AS "error_code_camp_moto_channel"
 		FROM "create_set_nc_values" "create_set_nc_values"
 	)
@@ -282,7 +282,7 @@ BEGIN -- ext_tgt
 	SELECT 
 		  "calculate_bk"."load_cycle_id" AS "load_cycle_id"
 		, CASE WHEN "calculate_bk"."record_type" != 'E' THEN TO_TIMESTAMP(NULL , 'DD/MM/YYYY HH24:MI:SS.US'::varchar)
-			ELSE "calculate_bk"."load_date" END AS "load_date"
+			ELSE"calculate_bk"."load_date" END AS "load_date"
 		, "calculate_bk"."trans_timestamp" AS "trans_timestamp"
 		, "calculate_bk"."operation" AS "operation"
 		, "calculate_bk"."record_type" AS "record_type"

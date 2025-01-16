@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -70,10 +70,10 @@ BEGIN -- ext_tgt
 			, "tdfv_src"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."province" = 'unchanged'::text THEN 0 ELSE 1 END AS "ch_province"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."update_timestamp" = TO_TIMESTAMP('01/01/1970 00:00:00',
-				 'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_update_timestamp"
+				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_update_timestamp"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."province" = 'unchanged'::text THEN 1 ELSE 0 END AS "nc_province"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."update_timestamp" = TO_TIMESTAMP('01/01/1970 00:00:00',
-				 'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_update_timestamp"
+				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_update_timestamp"
 		FROM "moto_mktg_scn01_dfv"."vw_addresses" "tdfv_src"
 		INNER JOIN "moto_mktg_scn01_mtd"."load_cycle_info" "lci_src" ON  1 = 1
 		INNER JOIN "moto_mktg_scn01_mtd"."mtd_exception_records" "mex_src" ON  1 = 1
@@ -93,13 +93,13 @@ BEGIN -- ext_tgt
 			, "calculate_variables"."postal_code" AS "postal_code"
 			, "calculate_variables"."city" AS "city"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_street_name")
-				OVER(PARTITION BY "calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_street_name"
+				OVER(PARTITION BY"calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_street_name"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_street_number")
-				OVER(PARTITION BY "calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_street_number"
+				OVER(PARTITION BY"calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_street_number"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_postal_code")
-				OVER(PARTITION BY "calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_postal_code"
+				OVER(PARTITION BY"calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_postal_code"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_city")
-				OVER(PARTITION BY "calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_city"
+				OVER(PARTITION BY"calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_city"
 			, "calculate_variables"."nc_street_name" AS "nc_street_name"
 			, "calculate_variables"."nc_street_number" AS "nc_street_number"
 			, "calculate_variables"."nc_postal_code" AS "nc_postal_code"
@@ -107,9 +107,9 @@ BEGIN -- ext_tgt
 			, "calculate_variables"."province" AS "province"
 			, "calculate_variables"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_province")
-				OVER(PARTITION BY "calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_province"
+				OVER(PARTITION BY"calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_province"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_update_timestamp")
-				OVER(PARTITION BY "calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_update_timestamp"
+				OVER(PARTITION BY"calculate_variables"."address_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_update_timestamp"
 			, "calculate_variables"."nc_province" AS "nc_province"
 			, "calculate_variables"."nc_update_timestamp" AS "nc_update_timestamp"
 		FROM "calculate_variables" "calculate_variables"
@@ -139,7 +139,7 @@ BEGIN -- ext_tgt
 			, "change_index"."trans_timestamp" AS "trans_timestamp"
 			, "change_index"."operation" AS "operation"
 			, CASE WHEN "change_index"."operation" = 'I' THEN 1 WHEN "change_index"."operation" = 'U' THEN 2 WHEN "change_index"."operation" =
-				 'D' THEN 3 ELSE 9999 END AS "order_operation"
+				'D' THEN 3 ELSE 9999 END AS "order_operation"
 			, "change_index"."record_type" AS "record_type"
 			, "change_index"."address_number" AS "address_number"
 			, "change_index"."street_name" AS "street_name"
@@ -147,11 +147,11 @@ BEGIN -- ext_tgt
 			, "change_index"."postal_code" AS "postal_code"
 			, "change_index"."city" AS "city"
 			, CASE WHEN "change_index"."nc_street_name" = 0 THEN 0 ELSE SUM("change_index"."nc_street_name")
-				OVER(PARTITION BY "change_index"."address_number","change_index"."ch_index_street_name" ORDER BY "change_index"."load_date")END AS "lag_index_street_name"
+				OVER(PARTITION BY"change_index"."address_number","change_index"."ch_index_street_name" ORDER BY "change_index"."load_date")END AS "lag_index_street_name"
 			, CASE WHEN "change_index"."nc_street_number" = 0 THEN 0 ELSE SUM("change_index"."nc_street_number")
-				OVER(PARTITION BY "change_index"."address_number","change_index"."ch_index_street_number" ORDER BY "change_index"."load_date")END AS "lag_index_street_number"
+				OVER(PARTITION BY"change_index"."address_number","change_index"."ch_index_street_number" ORDER BY "change_index"."load_date")END AS "lag_index_street_number"
 			, CASE WHEN "change_index"."nc_postal_code" = 0 THEN 0 ELSE SUM("change_index"."nc_postal_code")
-				OVER(PARTITION BY "change_index"."address_number","change_index"."ch_index_postal_code" ORDER BY "change_index"."load_date")END AS "lag_index_postal_code"
+				OVER(PARTITION BY"change_index"."address_number","change_index"."ch_index_postal_code" ORDER BY "change_index"."load_date")END AS "lag_index_postal_code"
 			, CASE WHEN "change_index"."nc_city" = 0 THEN 0 ELSE SUM("change_index"."nc_city")OVER(PARTITION BY "change_index"."address_number",
 				"change_index"."ch_index_city" ORDER BY "change_index"."load_date")END AS "lag_index_city"
 			, "change_index"."province" AS "province"
@@ -159,7 +159,7 @@ BEGIN -- ext_tgt
 			, CASE WHEN "change_index"."nc_province" = 0 THEN 0 ELSE SUM("change_index"."nc_province")OVER(PARTITION BY "change_index"."address_number",
 				"change_index"."ch_index_province" ORDER BY "change_index"."load_date")END AS "lag_index_province"
 			, CASE WHEN "change_index"."nc_update_timestamp" = 0 THEN 0 ELSE SUM("change_index"."nc_update_timestamp")
-				OVER(PARTITION BY "change_index"."address_number","change_index"."ch_index_update_timestamp" ORDER BY "change_index"."load_date")END AS "lag_index_update_timestamp"
+				OVER(PARTITION BY"change_index"."address_number","change_index"."ch_index_update_timestamp" ORDER BY "change_index"."load_date")END AS "lag_index_update_timestamp"
 		FROM "change_index" "change_index"
 		UNION ALL 
 		SELECT 
@@ -184,7 +184,7 @@ BEGIN -- ext_tgt
 			, 0 AS "lag_index_update_timestamp"
 		FROM "previous_version" "previous_version"
 		INNER JOIN "moto_scn01_fl"."sat_mm_addresses" "result_sat_values" ON  "previous_version"."address_number" = "result_sat_values"."address_number" AND "previous_version"."load_date" =
-			 "result_sat_values"."load_date" AND "previous_version"."dummy" = 1
+			"result_sat_values"."load_date" AND "previous_version"."dummy" = 1
 	)
 	, "result_set_nc_values" AS 
 	( 
@@ -196,17 +196,17 @@ BEGIN -- ext_tgt
 			, "create_set_nc_values"."record_type" AS "record_type"
 			, "create_set_nc_values"."address_number" AS "address_number"
 			, LAG("create_set_nc_values"."street_name", "create_set_nc_values"."lag_index_street_name"::int)
-				OVER(PARTITION BY "create_set_nc_values"."address_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "street_name"
+				OVER(PARTITION BY"create_set_nc_values"."address_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "street_name"
 			, LAG("create_set_nc_values"."street_number", "create_set_nc_values"."lag_index_street_number"::int)
-				OVER(PARTITION BY "create_set_nc_values"."address_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "street_number"
+				OVER(PARTITION BY"create_set_nc_values"."address_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "street_number"
 			, LAG("create_set_nc_values"."postal_code", "create_set_nc_values"."lag_index_postal_code"::int)
-				OVER(PARTITION BY "create_set_nc_values"."address_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "postal_code"
+				OVER(PARTITION BY"create_set_nc_values"."address_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "postal_code"
 			, LAG("create_set_nc_values"."city", "create_set_nc_values"."lag_index_city"::int)OVER(PARTITION BY "create_set_nc_values"."address_number" ORDER BY "create_set_nc_values"."load_date",
 				"create_set_nc_values"."order_operation") AS "city"
 			, LAG("create_set_nc_values"."province", "create_set_nc_values"."lag_index_province"::int)OVER(PARTITION BY "create_set_nc_values"."address_number" ORDER BY "create_set_nc_values"."load_date",
 				"create_set_nc_values"."order_operation") AS "province"
 			, LAG("create_set_nc_values"."update_timestamp", "create_set_nc_values"."lag_index_update_timestamp"::int)
-				OVER(PARTITION BY "create_set_nc_values"."address_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "update_timestamp"
+				OVER(PARTITION BY"create_set_nc_values"."address_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "update_timestamp"
 		FROM "create_set_nc_values" "create_set_nc_values"
 	)
 	, "calculate_bk" AS 
@@ -235,7 +235,7 @@ BEGIN -- ext_tgt
 	SELECT 
 		  "calculate_bk"."load_cycle_id" AS "load_cycle_id"
 		, CURRENT_TIMESTAMP + row_number() over (PARTITION BY  "calculate_bk"."street_name_bk" ,  "calculate_bk"."street_number_bk" ,
-			  "calculate_bk"."postal_code_bk" ,  "calculate_bk"."city_bk"  ORDER BY  "calculate_bk"."trans_timestamp") * interval'2 microsecond'   AS "load_date"
+			"calculate_bk"."postal_code_bk" ,  "calculate_bk"."city_bk"  ORDER BY  "calculate_bk"."trans_timestamp") * interval'2 microsecond'   AS "load_date"
 		, "calculate_bk"."trans_timestamp" AS "trans_timestamp"
 		, "calculate_bk"."operation" AS "operation"
 		, "calculate_bk"."record_type" AS "record_type"

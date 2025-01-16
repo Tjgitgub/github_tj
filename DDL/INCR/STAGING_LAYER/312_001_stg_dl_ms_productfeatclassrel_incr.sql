@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:47:43
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:35:04
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:00:22
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:51:08
  */
 
 
@@ -186,9 +186,9 @@ BEGIN -- stg_dl_tgt
 	( 
 		SELECT 
 			  UPPER(ENCODE(DIGEST(  'moto_sales_scn01' || '#' || COALESCE("find_bk_fk1"."product_cc_bk","mex_src"."key_attribute_numeric")
-				|| '#' ||  COALESCE("find_bk_fk1"."product_et_code_bk","mex_src"."key_attribute_character")|| '#' ||  COALESCE("find_bk_fk1"."product_part_code_bk","mex_src"."key_attribute_varchar")|| '#' || COALESCE("find_bk_fk2"."pro_fea_cla_code_bk","mex_src"."key_attribute_varchar")|| '#' || COALESCE("find_bk_fk3"."produ_featu_code_bk","mex_src"."key_attribute_varchar")|| '#'  ,'MD5'),'HEX')) AS "lnd_pro_fea_clas_rel_hkey"
+				||'#' ||  COALESCE("find_bk_fk1"."product_et_code_bk","mex_src"."key_attribute_character")|| '#' ||  COALESCE("find_bk_fk1"."product_part_code_bk","mex_src"."key_attribute_varchar")|| '#' || COALESCE("find_bk_fk2"."pro_fea_cla_code_bk","mex_src"."key_attribute_varchar")|| '#' || COALESCE("find_bk_fk3"."produ_featu_code_bk","mex_src"."key_attribute_varchar")|| '#'  ,'MD5'),'HEX')) AS "lnd_pro_fea_clas_rel_hkey"
 			, UPPER(ENCODE(DIGEST( 'moto_sales_scn01' || '#' || COALESCE("find_bk_fk1"."product_cc_bk","mex_src"."key_attribute_numeric")
-				|| '#' ||  COALESCE("find_bk_fk1"."product_et_code_bk","mex_src"."key_attribute_character")|| '#' ||  COALESCE("find_bk_fk1"."product_part_code_bk","mex_src"."key_attribute_varchar")|| '#' ,'MD5'),'HEX')) AS "products_hkey"
+				||'#' ||  COALESCE("find_bk_fk1"."product_et_code_bk","mex_src"."key_attribute_character")|| '#' ||  COALESCE("find_bk_fk1"."product_part_code_bk","mex_src"."key_attribute_varchar")|| '#' ,'MD5'),'HEX')) AS "products_hkey"
 			, UPPER(ENCODE(DIGEST( COALESCE("find_bk_fk2"."pro_fea_cla_code_bk","mex_src"."key_attribute_varchar")|| '#' ,
 				'MD5'),'HEX')) AS "prod_featu_class_hkey"
 			, UPPER(ENCODE(DIGEST( COALESCE("find_bk_fk3"."produ_featu_code_bk","mex_src"."key_attribute_varchar")|| '#' ,
@@ -208,7 +208,7 @@ BEGIN -- stg_dl_tgt
 			, NULL::text AS "produ_featu_code_fk_productfeatureid_bk"
 			, "ext_src"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "ext_src"."error_code_pro_fea_clas_rel" = 2 THEN 2 WHEN "ext_src"."error_code_pro_fea_clas_rel" =
-				- 1 THEN 0 WHEN  "find_bk_fk1"."product_id" IS NULL OR "find_bk_fk2"."product_feature_class_id" IS NULL OR "find_bk_fk3"."product_feature_id" IS NULL  THEN "ext_src"."error_code_pro_fea_clas_rel" ELSE 0 END AS "error_code_pro_fea_clas_rel"
+				- 1 THEN 0 WHEN"find_bk_fk1"."product_id" IS NULL OR "find_bk_fk2"."product_feature_class_id" IS NULL OR "find_bk_fk3"."product_feature_id" IS NULL  THEN "ext_src"."error_code_pro_fea_clas_rel" ELSE 0 END AS "error_code_pro_fea_clas_rel"
 		FROM "moto_sales_scn01_ext"."product_feat_class_rel" "ext_src"
 		INNER JOIN "moto_sales_scn01_mtd"."mtd_exception_records" "mex_src" ON  "mex_src"."record_type" = 'U'
 		LEFT OUTER JOIN "find_bk_fk1" "find_bk_fk1" ON  "ext_src"."product_id" = "find_bk_fk1"."product_id"

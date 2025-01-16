@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -119,7 +119,7 @@ BEGIN -- stg_dl_tgt
 			, "ext_src"."valid_to_date" AS "valid_to_date"
 			, "ext_src"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "ext_src"."error_code_camp_moto_channel" = 2 THEN 2 WHEN "ext_src"."error_code_camp_moto_channel" =
-				- 1 THEN 0 WHEN  "find_bk_fk1"."channel_id" IS NULL  THEN "ext_src"."error_code_camp_moto_channel" ELSE 0 END AS "error_code_camp_moto_channel"
+				- 1 THEN 0 WHEN"find_bk_fk1"."channel_id" IS NULL  THEN "ext_src"."error_code_camp_moto_channel" ELSE 0 END AS "error_code_camp_moto_channel"
 		FROM "moto_mktg_scn01_ext"."camp_moto_channel" "ext_src"
 		INNER JOIN "moto_mktg_scn01_mtd"."mtd_exception_records" "mex_src" ON  "mex_src"."record_type" = 'U'
 		LEFT OUTER JOIN "find_bk_fk1" "find_bk_fk1" ON  "ext_src"."channel_id" = "find_bk_fk1"."channel_id"

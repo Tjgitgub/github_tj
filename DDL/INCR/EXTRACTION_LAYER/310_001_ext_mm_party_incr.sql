@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -84,10 +84,10 @@ BEGIN -- ext_tgt
 			, "tdfv_src"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."comments" = 'unchanged'::text THEN 0 ELSE 1 END AS "ch_comments"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."update_timestamp" = TO_TIMESTAMP('01/01/1970 00:00:00',
-				 'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_update_timestamp"
+				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_update_timestamp"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."comments" = 'unchanged'::text THEN 1 ELSE 0 END AS "nc_comments"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."update_timestamp" = TO_TIMESTAMP('01/01/1970 00:00:00',
-				 'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_update_timestamp"
+				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_update_timestamp"
 		FROM "moto_mktg_scn01_dfv"."vw_party" "tdfv_src"
 		INNER JOIN "moto_mktg_scn01_mtd"."load_cycle_info" "lci_src" ON  1 = 1
 		INNER JOIN "moto_mktg_scn01_mtd"."mtd_exception_records" "mex_src" ON  1 = 1
@@ -105,9 +105,9 @@ BEGIN -- ext_tgt
 			, "calculate_variables"."parent_party_number" AS "parent_party_number"
 			, "calculate_variables"."address_number" AS "address_number"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_parent_party_number")
-				OVER(PARTITION BY "calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_parent_party_number"
+				OVER(PARTITION BY"calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_parent_party_number"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_address_number")
-				OVER(PARTITION BY "calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_address_number"
+				OVER(PARTITION BY"calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_address_number"
 			, "calculate_variables"."nc_parent_party_number" AS "nc_parent_party_number"
 			, "calculate_variables"."nc_address_number" AS "nc_address_number"
 			, "calculate_variables"."name" AS "name"
@@ -115,13 +115,13 @@ BEGIN -- ext_tgt
 			, "calculate_variables"."gender" AS "gender"
 			, "calculate_variables"."party_type_code" AS "party_type_code"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_name")
-				OVER(PARTITION BY "calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_name"
+				OVER(PARTITION BY"calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_name"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_birthdate")
-				OVER(PARTITION BY "calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_birthdate"
+				OVER(PARTITION BY"calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_birthdate"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_gender")
-				OVER(PARTITION BY "calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_gender"
+				OVER(PARTITION BY"calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_gender"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_party_type_code")
-				OVER(PARTITION BY "calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_party_type_code"
+				OVER(PARTITION BY"calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_party_type_code"
 			, "calculate_variables"."nc_name" AS "nc_name"
 			, "calculate_variables"."nc_birthdate" AS "nc_birthdate"
 			, "calculate_variables"."nc_gender" AS "nc_gender"
@@ -129,9 +129,9 @@ BEGIN -- ext_tgt
 			, "calculate_variables"."comments" AS "comments"
 			, "calculate_variables"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_comments")
-				OVER(PARTITION BY "calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_comments"
+				OVER(PARTITION BY"calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_comments"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_update_timestamp")
-				OVER(PARTITION BY "calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_update_timestamp"
+				OVER(PARTITION BY"calculate_variables"."party_number" ORDER BY "calculate_variables"."load_date")END AS "ch_index_update_timestamp"
 			, "calculate_variables"."nc_comments" AS "nc_comments"
 			, "calculate_variables"."nc_update_timestamp" AS "nc_update_timestamp"
 		FROM "calculate_variables" "calculate_variables"
@@ -161,15 +161,15 @@ BEGIN -- ext_tgt
 			, "change_index"."trans_timestamp" AS "trans_timestamp"
 			, "change_index"."operation" AS "operation"
 			, CASE WHEN "change_index"."operation" = 'I' THEN 1 WHEN "change_index"."operation" = 'U' THEN 2 WHEN "change_index"."operation" =
-				 'D' THEN 3 ELSE 9999 END AS "order_operation"
+				'D' THEN 3 ELSE 9999 END AS "order_operation"
 			, "change_index"."record_type" AS "record_type"
 			, "change_index"."party_number" AS "party_number"
 			, "change_index"."parent_party_number" AS "parent_party_number"
 			, "change_index"."address_number" AS "address_number"
 			, CASE WHEN "change_index"."nc_parent_party_number" = 0 THEN 0 ELSE SUM("change_index"."nc_parent_party_number")
-				OVER(PARTITION BY "change_index"."party_number","change_index"."ch_index_parent_party_number" ORDER BY "change_index"."load_date")END AS "lag_index_parent_party_number"
+				OVER(PARTITION BY"change_index"."party_number","change_index"."ch_index_parent_party_number" ORDER BY "change_index"."load_date")END AS "lag_index_parent_party_number"
 			, CASE WHEN "change_index"."nc_address_number" = 0 THEN 0 ELSE SUM("change_index"."nc_address_number")
-				OVER(PARTITION BY "change_index"."party_number","change_index"."ch_index_address_number" ORDER BY "change_index"."load_date")END AS "lag_index_address_number"
+				OVER(PARTITION BY"change_index"."party_number","change_index"."ch_index_address_number" ORDER BY "change_index"."load_date")END AS "lag_index_address_number"
 			, "change_index"."name" AS "name"
 			, "change_index"."birthdate" AS "birthdate"
 			, "change_index"."gender" AS "gender"
@@ -181,13 +181,13 @@ BEGIN -- ext_tgt
 			, CASE WHEN "change_index"."nc_gender" = 0 THEN 0 ELSE SUM("change_index"."nc_gender")OVER(PARTITION BY "change_index"."party_number",
 				"change_index"."ch_index_gender" ORDER BY "change_index"."load_date")END AS "lag_index_gender"
 			, CASE WHEN "change_index"."nc_party_type_code" = 0 THEN 0 ELSE SUM("change_index"."nc_party_type_code")
-				OVER(PARTITION BY "change_index"."party_number","change_index"."ch_index_party_type_code" ORDER BY "change_index"."load_date")END AS "lag_index_party_type_code"
+				OVER(PARTITION BY"change_index"."party_number","change_index"."ch_index_party_type_code" ORDER BY "change_index"."load_date")END AS "lag_index_party_type_code"
 			, "change_index"."comments" AS "comments"
 			, "change_index"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "change_index"."nc_comments" = 0 THEN 0 ELSE SUM("change_index"."nc_comments")OVER(PARTITION BY "change_index"."party_number",
 				"change_index"."ch_index_comments" ORDER BY "change_index"."load_date")END AS "lag_index_comments"
 			, CASE WHEN "change_index"."nc_update_timestamp" = 0 THEN 0 ELSE SUM("change_index"."nc_update_timestamp")
-				OVER(PARTITION BY "change_index"."party_number","change_index"."ch_index_update_timestamp" ORDER BY "change_index"."load_date")END AS "lag_index_update_timestamp"
+				OVER(PARTITION BY"change_index"."party_number","change_index"."ch_index_update_timestamp" ORDER BY "change_index"."load_date")END AS "lag_index_update_timestamp"
 			, 1 AS "error_code_cust_cust_parentpartynumber"
 			, 1 AS "error_code_cust_addr"
 		FROM "change_index" "change_index"
@@ -262,9 +262,9 @@ BEGIN -- ext_tgt
 			, "create_set_nc_values"."record_type" AS "record_type"
 			, "create_set_nc_values"."party_number" AS "party_number"
 			, LAG("create_set_nc_values"."parent_party_number", "create_set_nc_values"."lag_index_parent_party_number"::int)
-				OVER(PARTITION BY "create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "parent_party_number"
+				OVER(PARTITION BY"create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "parent_party_number"
 			, LAG("create_set_nc_values"."address_number", "create_set_nc_values"."lag_index_address_number"::int)
-				OVER(PARTITION BY "create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "address_number"
+				OVER(PARTITION BY"create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "address_number"
 			, LAG("create_set_nc_values"."name", "create_set_nc_values"."lag_index_name"::int)OVER(PARTITION BY "create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date",
 				"create_set_nc_values"."order_operation") AS "name"
 			, LAG("create_set_nc_values"."birthdate", "create_set_nc_values"."lag_index_birthdate"::int)OVER(PARTITION BY "create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date",
@@ -272,11 +272,11 @@ BEGIN -- ext_tgt
 			, LAG("create_set_nc_values"."gender", "create_set_nc_values"."lag_index_gender"::int)OVER(PARTITION BY "create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date",
 				"create_set_nc_values"."order_operation") AS "gender"
 			, LAG("create_set_nc_values"."party_type_code", "create_set_nc_values"."lag_index_party_type_code"::int)
-				OVER(PARTITION BY "create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "party_type_code"
+				OVER(PARTITION BY"create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "party_type_code"
 			, LAG("create_set_nc_values"."comments", "create_set_nc_values"."lag_index_comments"::int)OVER(PARTITION BY "create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date",
 				"create_set_nc_values"."order_operation") AS "comments"
 			, LAG("create_set_nc_values"."update_timestamp", "create_set_nc_values"."lag_index_update_timestamp"::int)
-				OVER(PARTITION BY "create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "update_timestamp"
+				OVER(PARTITION BY"create_set_nc_values"."party_number" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "update_timestamp"
 			, "create_set_nc_values"."error_code_cust_cust_parentpartynumber" AS "error_code_cust_cust_parentpartynumber"
 			, "create_set_nc_values"."error_code_cust_addr" AS "error_code_cust_addr"
 		FROM "create_set_nc_values" "create_set_nc_values"
@@ -311,7 +311,7 @@ BEGIN -- ext_tgt
 	SELECT 
 		  "calculate_bk"."load_cycle_id" AS "load_cycle_id"
 		, CASE WHEN "calculate_bk"."record_type" != 'E' THEN CURRENT_TIMESTAMP + row_number() over (PARTITION BY  "calculate_bk"."name_bk" ,
-			  "calculate_bk"."birthdate_bk" ,  "calculate_bk"."gender_bk" ,  "calculate_bk"."party_type_code_bk"  ORDER BY  "calculate_bk"."trans_timestamp") * interval'2 microsecond'   ELSE "calculate_bk"."load_date" END AS "load_date"
+			"calculate_bk"."birthdate_bk" ,  "calculate_bk"."gender_bk" ,  "calculate_bk"."party_type_code_bk"  ORDER BY  "calculate_bk"."trans_timestamp") * interval'2 microsecond'   ELSE "calculate_bk"."load_date" END AS "load_date"
 		, "calculate_bk"."trans_timestamp" AS "trans_timestamp"
 		, "calculate_bk"."operation" AS "operation"
 		, "calculate_bk"."record_type" AS "record_type"

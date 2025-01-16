@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:50:01
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:35:04
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:03:29
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:51:08
  */
 
 
@@ -165,7 +165,7 @@ BEGIN -- las_temp_tgt
 		, "temp_table_set"."load_end_date" AS "load_end_date"
 		, "temp_table_set"."source" ::text AS "source"
 		, CASE WHEN "temp_table_set"."source" IN(1,3)AND "temp_table_set"."delete_flag"::text || "temp_table_set"."addresses_hkey"::text =
-			LAG( "temp_table_set"."delete_flag"::text || "temp_table_set"."addresses_hkey"::text,1)OVER(PARTITION BY "temp_table_set"."customers_hkey" ORDER BY "temp_table_set"."load_date","temp_table_set"."source")THEN 1 ELSE 0 END AS "equal"
+			LAG("temp_table_set"."delete_flag"::text || "temp_table_set"."addresses_hkey"::text,1)OVER(PARTITION BY "temp_table_set"."customers_hkey" ORDER BY "temp_table_set"."load_date","temp_table_set"."source")THEN 1 ELSE 0 END AS "equal"
 		, "temp_table_set"."delete_flag" AS "delete_flag"
 		, "temp_table_set"."trans_timestamp" AS "trans_timestamp"
 		, "temp_table_set"."party_number" AS "party_number"
@@ -218,7 +218,7 @@ BEGIN -- las_ed_tgt
 			, "las_temp_src_dup"."delete_flag" AS "delete_flag"
 			, "las_temp_src_dup"."trans_timestamp" AS "trans_timestamp"
 			, ROW_NUMBER()OVER(PARTITION BY "las_temp_src_dup"."customers_hkey","las_temp_src_dup"."load_date" ORDER BY CASE WHEN "las_temp_src_dup"."source" =
-				 '1' THEN 1 WHEN "las_temp_src_dup"."source" = '3' THEN 2 ELSE 3 END) AS "dummy"
+				'1' THEN 1 WHEN "las_temp_src_dup"."source" = '3' THEN 2 ELSE 3 END) AS "dummy"
 			, "las_temp_src_dup"."source" AS "source"
 		FROM "moto_scn01_bv"."las_mm_cust_addr_tmp" "las_temp_src_dup"
 		WHERE  "las_temp_src_dup"."equal" = 0

@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -62,10 +62,10 @@ BEGIN -- ext_tgt
 			, "tdfv_src"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."motorcycle_name" = 'unchanged'::text THEN 0 ELSE 1 END AS "ch_motorcycle_name"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."update_timestamp" = TO_TIMESTAMP('01/01/1970 00:00:00',
-				 'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_update_timestamp"
+				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 0 ELSE 1 END AS "ch_update_timestamp"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."motorcycle_name" = 'unchanged'::text THEN 1 ELSE 0 END AS "nc_motorcycle_name"
 			, CASE WHEN "tdfv_src"."operation" = 'U' AND "tdfv_src"."update_timestamp" = TO_TIMESTAMP('01/01/1970 00:00:00',
-				 'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_update_timestamp"
+				'DD/MM/YYYY HH24:MI:SS.US'::varchar) THEN 1 ELSE 0 END AS "nc_update_timestamp"
 		FROM "moto_mktg_scn01_dfv"."vw_motorcycles" "tdfv_src"
 		INNER JOIN "moto_mktg_scn01_mtd"."load_cycle_info" "lci_src" ON  1 = 1
 		INNER JOIN "moto_mktg_scn01_mtd"."mtd_exception_records" "mex_src" ON  1 = 1
@@ -84,20 +84,20 @@ BEGIN -- ext_tgt
 			, "calculate_variables"."motorcycle_et_code" AS "motorcycle_et_code"
 			, "calculate_variables"."motorcycle_part_code" AS "motorcycle_part_code"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_motorcycle_cc")
-				OVER(PARTITION BY "calculate_variables"."motorcycle_id" ORDER BY "calculate_variables"."load_date")END AS "ch_index_motorcycle_cc"
+				OVER(PARTITION BY"calculate_variables"."motorcycle_id" ORDER BY "calculate_variables"."load_date")END AS "ch_index_motorcycle_cc"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_motorcycle_et_code")
-				OVER(PARTITION BY "calculate_variables"."motorcycle_id" ORDER BY "calculate_variables"."load_date")END AS "ch_index_motorcycle_et_code"
+				OVER(PARTITION BY"calculate_variables"."motorcycle_id" ORDER BY "calculate_variables"."load_date")END AS "ch_index_motorcycle_et_code"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_motorcycle_part_code")
-				OVER(PARTITION BY "calculate_variables"."motorcycle_id" ORDER BY "calculate_variables"."load_date")END AS "ch_index_motorcycle_part_code"
+				OVER(PARTITION BY"calculate_variables"."motorcycle_id" ORDER BY "calculate_variables"."load_date")END AS "ch_index_motorcycle_part_code"
 			, "calculate_variables"."nc_motorcycle_cc" AS "nc_motorcycle_cc"
 			, "calculate_variables"."nc_motorcycle_et_code" AS "nc_motorcycle_et_code"
 			, "calculate_variables"."nc_motorcycle_part_code" AS "nc_motorcycle_part_code"
 			, "calculate_variables"."motorcycle_name" AS "motorcycle_name"
 			, "calculate_variables"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_motorcycle_name")
-				OVER(PARTITION BY "calculate_variables"."motorcycle_id" ORDER BY "calculate_variables"."load_date")END AS "ch_index_motorcycle_name"
+				OVER(PARTITION BY"calculate_variables"."motorcycle_id" ORDER BY "calculate_variables"."load_date")END AS "ch_index_motorcycle_name"
 			, CASE WHEN "calculate_variables"."operation" != 'U' THEN 0 ELSE SUM("calculate_variables"."ch_update_timestamp")
-				OVER(PARTITION BY "calculate_variables"."motorcycle_id" ORDER BY "calculate_variables"."load_date")END AS "ch_index_update_timestamp"
+				OVER(PARTITION BY"calculate_variables"."motorcycle_id" ORDER BY "calculate_variables"."load_date")END AS "ch_index_update_timestamp"
 			, "calculate_variables"."nc_motorcycle_name" AS "nc_motorcycle_name"
 			, "calculate_variables"."nc_update_timestamp" AS "nc_update_timestamp"
 		FROM "calculate_variables" "calculate_variables"
@@ -127,24 +127,24 @@ BEGIN -- ext_tgt
 			, "change_index"."trans_timestamp" AS "trans_timestamp"
 			, "change_index"."operation" AS "operation"
 			, CASE WHEN "change_index"."operation" = 'I' THEN 1 WHEN "change_index"."operation" = 'U' THEN 2 WHEN "change_index"."operation" =
-				 'D' THEN 3 ELSE 9999 END AS "order_operation"
+				'D' THEN 3 ELSE 9999 END AS "order_operation"
 			, "change_index"."record_type" AS "record_type"
 			, "change_index"."motorcycle_id" AS "motorcycle_id"
 			, "change_index"."motorcycle_cc" AS "motorcycle_cc"
 			, "change_index"."motorcycle_et_code" AS "motorcycle_et_code"
 			, "change_index"."motorcycle_part_code" AS "motorcycle_part_code"
 			, CASE WHEN "change_index"."nc_motorcycle_cc" = 0 THEN 0 ELSE SUM("change_index"."nc_motorcycle_cc")
-				OVER(PARTITION BY "change_index"."motorcycle_id","change_index"."ch_index_motorcycle_cc" ORDER BY "change_index"."load_date")END AS "lag_index_motorcycle_cc"
+				OVER(PARTITION BY"change_index"."motorcycle_id","change_index"."ch_index_motorcycle_cc" ORDER BY "change_index"."load_date")END AS "lag_index_motorcycle_cc"
 			, CASE WHEN "change_index"."nc_motorcycle_et_code" = 0 THEN 0 ELSE SUM("change_index"."nc_motorcycle_et_code")
-				OVER(PARTITION BY "change_index"."motorcycle_id","change_index"."ch_index_motorcycle_et_code" ORDER BY "change_index"."load_date")END AS "lag_index_motorcycle_et_code"
+				OVER(PARTITION BY"change_index"."motorcycle_id","change_index"."ch_index_motorcycle_et_code" ORDER BY "change_index"."load_date")END AS "lag_index_motorcycle_et_code"
 			, CASE WHEN "change_index"."nc_motorcycle_part_code" = 0 THEN 0 ELSE SUM("change_index"."nc_motorcycle_part_code")
-				OVER(PARTITION BY "change_index"."motorcycle_id","change_index"."ch_index_motorcycle_part_code" ORDER BY "change_index"."load_date")END AS "lag_index_motorcycle_part_code"
+				OVER(PARTITION BY"change_index"."motorcycle_id","change_index"."ch_index_motorcycle_part_code" ORDER BY "change_index"."load_date")END AS "lag_index_motorcycle_part_code"
 			, "change_index"."motorcycle_name" AS "motorcycle_name"
 			, "change_index"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "change_index"."nc_motorcycle_name" = 0 THEN 0 ELSE SUM("change_index"."nc_motorcycle_name")
-				OVER(PARTITION BY "change_index"."motorcycle_id","change_index"."ch_index_motorcycle_name" ORDER BY "change_index"."load_date")END AS "lag_index_motorcycle_name"
+				OVER(PARTITION BY"change_index"."motorcycle_id","change_index"."ch_index_motorcycle_name" ORDER BY "change_index"."load_date")END AS "lag_index_motorcycle_name"
 			, CASE WHEN "change_index"."nc_update_timestamp" = 0 THEN 0 ELSE SUM("change_index"."nc_update_timestamp")
-				OVER(PARTITION BY "change_index"."motorcycle_id","change_index"."ch_index_update_timestamp" ORDER BY "change_index"."load_date")END AS "lag_index_update_timestamp"
+				OVER(PARTITION BY"change_index"."motorcycle_id","change_index"."ch_index_update_timestamp" ORDER BY "change_index"."load_date")END AS "lag_index_update_timestamp"
 		FROM "change_index" "change_index"
 		UNION ALL 
 		SELECT 
@@ -180,15 +180,15 @@ BEGIN -- ext_tgt
 			, "create_set_nc_values"."record_type" AS "record_type"
 			, "create_set_nc_values"."motorcycle_id" AS "motorcycle_id"
 			, LAG("create_set_nc_values"."motorcycle_cc", "create_set_nc_values"."lag_index_motorcycle_cc"::int)
-				OVER(PARTITION BY "create_set_nc_values"."motorcycle_id" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "motorcycle_cc"
+				OVER(PARTITION BY"create_set_nc_values"."motorcycle_id" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "motorcycle_cc"
 			, LAG("create_set_nc_values"."motorcycle_et_code", "create_set_nc_values"."lag_index_motorcycle_et_code"::int)
-				OVER(PARTITION BY "create_set_nc_values"."motorcycle_id" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "motorcycle_et_code"
+				OVER(PARTITION BY"create_set_nc_values"."motorcycle_id" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "motorcycle_et_code"
 			, LAG("create_set_nc_values"."motorcycle_part_code", "create_set_nc_values"."lag_index_motorcycle_part_code"::int)
-				OVER(PARTITION BY "create_set_nc_values"."motorcycle_id" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "motorcycle_part_code"
+				OVER(PARTITION BY"create_set_nc_values"."motorcycle_id" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "motorcycle_part_code"
 			, LAG("create_set_nc_values"."motorcycle_name", "create_set_nc_values"."lag_index_motorcycle_name"::int)
-				OVER(PARTITION BY "create_set_nc_values"."motorcycle_id" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "motorcycle_name"
+				OVER(PARTITION BY"create_set_nc_values"."motorcycle_id" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "motorcycle_name"
 			, LAG("create_set_nc_values"."update_timestamp", "create_set_nc_values"."lag_index_update_timestamp"::int)
-				OVER(PARTITION BY "create_set_nc_values"."motorcycle_id" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "update_timestamp"
+				OVER(PARTITION BY"create_set_nc_values"."motorcycle_id" ORDER BY "create_set_nc_values"."load_date","create_set_nc_values"."order_operation") AS "update_timestamp"
 		FROM "create_set_nc_values" "create_set_nc_values"
 	)
 	, "calculate_bk" AS 
@@ -212,7 +212,7 @@ BEGIN -- ext_tgt
 	SELECT 
 		  "calculate_bk"."load_cycle_id" AS "load_cycle_id"
 		, CURRENT_TIMESTAMP + row_number() over (PARTITION BY  "calculate_bk"."product_cc_bk" ,  "calculate_bk"."product_et_code_bk" ,
-			  "calculate_bk"."product_part_code_bk"  ORDER BY  "calculate_bk"."trans_timestamp") * interval'2 microsecond'   AS "load_date"
+			"calculate_bk"."product_part_code_bk"  ORDER BY  "calculate_bk"."trans_timestamp") * interval'2 microsecond'   AS "load_date"
 		, "calculate_bk"."trans_timestamp" AS "trans_timestamp"
 		, "calculate_bk"."operation" AS "operation"
 		, "calculate_bk"."record_type" AS "record_type"

@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:47:43
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:35:04
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:00:22
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:51:08
  */
 
 
@@ -91,7 +91,7 @@ BEGIN -- stg_tgt
 		SELECT 
 			  UPPER(ENCODE(DIGEST( "ext_src"."invoice_number_bk" || '#' ,'MD5'),'HEX')) AS "invoices_hkey"
 			, UPPER(ENCODE(DIGEST( 'moto_sales_scn01' || '#' || COALESCE("find_bk_fk1"."national_person_id_bk","mex_src"."key_attribute_varchar")
-				|| '#' ,'MD5'),'HEX')) AS "customers_hkey"
+				||'#' ,'MD5'),'HEX')) AS "customers_hkey"
 			, UPPER(ENCODE(DIGEST( "ext_src"."invoice_number_bk" || '#' || 'moto_sales_scn01' || '#' || COALESCE("find_bk_fk1"."national_person_id_bk",
 				"mex_src"."key_attribute_varchar")|| '#' ,'MD5'),'HEX')) AS "lnk_invo_cust_hkey"
 			, "ext_src"."load_date" AS "load_date"
@@ -108,7 +108,7 @@ BEGIN -- stg_tgt
 			, "ext_src"."discount" AS "discount"
 			, "ext_src"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "ext_src"."error_code_invo_cust" = 2 THEN 2 WHEN "ext_src"."error_code_invo_cust" =
-				- 1 THEN 0 WHEN "find_bk_fk1"."invoice_customer_id" IS NULL THEN "ext_src"."error_code_invo_cust" ELSE 0 END AS "error_code_invo_cust"
+				- 1 THEN 0 WHEN"find_bk_fk1"."invoice_customer_id" IS NULL THEN "ext_src"."error_code_invo_cust" ELSE 0 END AS "error_code_invo_cust"
 		FROM "moto_sales_scn01_ext"."invoices" "ext_src"
 		INNER JOIN "moto_sales_scn01_mtd"."mtd_exception_records" "mex_src" ON  "mex_src"."record_type" = 'U'
 		LEFT OUTER JOIN "find_bk_fk1" "find_bk_fk1" ON  "ext_src"."invoice_customer_id" = "find_bk_fk1"."invoice_customer_id"

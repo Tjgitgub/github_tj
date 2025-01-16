@@ -6,10 +6,10 @@
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -60,14 +60,14 @@ CREATE  VIEW "moto_mktg_scn01_dfv"."vw_addresses"  AS
 			, 'S' ::text AS "record_type"
 			, "cdc_aft"."address_number" AS "address_number"
 			, CASE WHEN("cdc_aft"."street_name" = "cdc_bef"."street_name")or("cdc_aft"."street_name" IS NULL AND "cdc_bef"."street_name" IS NULL)
-				THEN 'unchanged'::text else "cdc_aft"."street_name" end AS "street_name"
+				THEN'unchanged'::text else "cdc_aft"."street_name" end AS "street_name"
 			, CASE WHEN("cdc_aft"."street_number" = "cdc_bef"."street_number")or("cdc_aft"."street_number" IS NULL AND 
 				"cdc_bef"."street_number" IS NULL)THEN TO_NUMBER('-1', '999999999999D999999999'::varchar) else "cdc_aft"."street_number" end AS "street_number"
 			, CASE WHEN("cdc_aft"."postal_code" = "cdc_bef"."postal_code")or("cdc_aft"."postal_code" IS NULL AND "cdc_bef"."postal_code" IS NULL)
-				THEN 'unchanged'::text else "cdc_aft"."postal_code" end AS "postal_code"
+				THEN'unchanged'::text else "cdc_aft"."postal_code" end AS "postal_code"
 			, CASE WHEN("cdc_aft"."city" = "cdc_bef"."city")or("cdc_aft"."city" IS NULL AND "cdc_bef"."city" IS NULL)THEN 'unchanged'::text else "cdc_aft"."city" end AS "city"
 			, CASE WHEN("cdc_aft"."province" = "cdc_bef"."province")or("cdc_aft"."province" IS NULL AND "cdc_bef"."province" IS NULL)
-				THEN 'unchanged'::text else "cdc_aft"."province" end AS "province"
+				THEN'unchanged'::text else "cdc_aft"."province" end AS "province"
 			, CASE WHEN("cdc_aft"."update_timestamp" = "cdc_bef"."update_timestamp")or("cdc_aft"."update_timestamp" IS NULL AND 
 				"cdc_bef"."update_timestamp" IS NULL)THEN TO_TIMESTAMP('01/01/1970 00:00:00', 'DD/MM/YYYY HH24:MI:SS.US'::varchar) else "cdc_aft"."update_timestamp" end AS "update_timestamp"
 		FROM "moto_mktg_scn01"."jrn_addresses" "cdc_aft"

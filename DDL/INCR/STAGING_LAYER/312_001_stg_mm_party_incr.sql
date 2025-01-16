@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -173,7 +173,7 @@ BEGIN -- stg_tgt
 			  UPPER(ENCODE(DIGEST( 'moto_mktg_scn01' || '#' || "ext_src"."name_bk" || '#' ||  "ext_src"."birthdate_bk" || 
 				'#' ||  "ext_src"."gender_bk" || '#' ||  "ext_src"."party_type_code_bk" || '#' ,'MD5'),'HEX')) AS "customers_hkey"
 			, UPPER(ENCODE(DIGEST( 'moto_mktg_scn01' || '#' || COALESCE("find_bk_fk1"."name_bk","mex_src"."key_attribute_varchar")
-				|| '#' ||  COALESCE("find_bk_fk1"."birthdate_bk","mex_src"."key_attribute_date")|| '#' ||  COALESCE("find_bk_fk1"."gender_bk","mex_src"."key_attribute_character")|| '#' ||  COALESCE("find_bk_fk1"."party_type_code_bk","mex_src"."key_attribute_character")|| '#' ,'MD5'),'HEX')) AS "customers_parentpartynumber_hkey"
+				||'#' ||  COALESCE("find_bk_fk1"."birthdate_bk","mex_src"."key_attribute_date")|| '#' ||  COALESCE("find_bk_fk1"."gender_bk","mex_src"."key_attribute_character")|| '#' ||  COALESCE("find_bk_fk1"."party_type_code_bk","mex_src"."key_attribute_character")|| '#' ,'MD5'),'HEX')) AS "customers_parentpartynumber_hkey"
 			, UPPER(ENCODE(DIGEST( COALESCE("find_bk_fk2"."street_name_bk","mex_src"."key_attribute_varchar")|| '#' ||  COALESCE("find_bk_fk2"."street_number_bk",
 				"mex_src"."key_attribute_numeric")|| '#' ||  COALESCE("find_bk_fk2"."postal_code_bk","mex_src"."key_attribute_varchar")|| '#' ||  COALESCE("find_bk_fk2"."city_bk","mex_src"."key_attribute_varchar")|| '#' ,'MD5'),'HEX')) AS "addresses_hkey"
 			, UPPER(ENCODE(DIGEST( 'moto_mktg_scn01' || '#' || "ext_src"."name_bk" || '#' ||  "ext_src"."birthdate_bk" || 
@@ -206,9 +206,9 @@ BEGIN -- stg_tgt
 			, "ext_src"."comments" AS "comments"
 			, "ext_src"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "ext_src"."error_code_cust_cust_parentpartynumber" = 2 THEN 2 WHEN "ext_src"."error_code_cust_cust_parentpartynumber" =
-				- 1 THEN 0 WHEN "find_bk_fk1"."parent_party_number" IS NULL THEN "ext_src"."error_code_cust_cust_parentpartynumber" ELSE 0 END AS "error_code_cust_cust_parentpartynumber"
+				- 1 THEN 0 WHEN"find_bk_fk1"."parent_party_number" IS NULL THEN "ext_src"."error_code_cust_cust_parentpartynumber" ELSE 0 END AS "error_code_cust_cust_parentpartynumber"
 			, CASE WHEN "ext_src"."error_code_cust_addr" = 2 THEN 2 WHEN "ext_src"."error_code_cust_addr" =
-				- 1 THEN 0 WHEN "find_bk_fk2"."address_number" IS NULL THEN "ext_src"."error_code_cust_addr" ELSE 0 END AS "error_code_cust_addr"
+				- 1 THEN 0 WHEN"find_bk_fk2"."address_number" IS NULL THEN "ext_src"."error_code_cust_addr" ELSE 0 END AS "error_code_cust_addr"
 		FROM "moto_mktg_scn01_ext"."party" "ext_src"
 		INNER JOIN "moto_mktg_scn01_mtd"."mtd_exception_records" "mex_src" ON  "mex_src"."record_type" = 'U'
 		LEFT OUTER JOIN "find_bk_fk1" "find_bk_fk1" ON  "ext_src"."parent_party_number" = "find_bk_fk1"."parent_party_number"

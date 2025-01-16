@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:47:43
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:35:04
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:00:22
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:51:08
  */
 
 
@@ -90,7 +90,7 @@ BEGIN -- lks_temp_tgt
 			, "all_rel_del"."load_date" AS "load_date"
 		FROM "calc_interval" "calc_interval"
 		RIGHT OUTER JOIN "all_rel_del" "all_rel_del" ON  "calc_interval"."product_sensors_hkey" = "all_rel_del"."product_sensors_hkey" AND "all_rel_del"."load_date" >=
-			 "calc_interval"."load_date" AND "all_rel_del"."load_date" < "calc_interval"."end_interval" AND "calc_interval"."delete_flag" = 'N'::text
+			"calc_interval"."load_date" AND "all_rel_del"."load_date" < "calc_interval"."end_interval" AND "calc_interval"."delete_flag" = 'N'::text
 		WHERE  "calc_interval"."product_sensors_hkey" IS NULL AND "all_rel_del"."delete_flag" = 'Y'::text
 	)
 	, "temp_table_set" AS 
@@ -140,7 +140,7 @@ BEGIN -- lks_temp_tgt
 		, "temp_table_set"."record_type" AS "record_type"
 		, "temp_table_set"."source" AS "source"
 		, CASE WHEN "temp_table_set"."source" = 'STG' AND "temp_table_set"."delete_flag"::text || "temp_table_set"."products_hkey"::text =
-			LAG( "temp_table_set"."delete_flag"::text || "temp_table_set"."products_hkey"::text,1)OVER(PARTITION BY "temp_table_set"."product_sensors_hkey" ORDER BY "temp_table_set"."load_date","temp_table_set"."origin_id")THEN 1 ELSE 0 END AS "equal"
+			LAG("temp_table_set"."delete_flag"::text || "temp_table_set"."products_hkey"::text,1)OVER(PARTITION BY "temp_table_set"."product_sensors_hkey" ORDER BY "temp_table_set"."load_date","temp_table_set"."origin_id")THEN 1 ELSE 0 END AS "equal"
 		, "temp_table_set"."delete_flag" AS "delete_flag"
 		, "temp_table_set"."vehicle_number" AS "vehicle_number"
 		, "temp_table_set"."product_number" AS "product_number"

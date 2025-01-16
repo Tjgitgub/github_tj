@@ -6,10 +6,10 @@
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -71,11 +71,11 @@ CREATE  VIEW "moto_mktg_scn01_dfv"."vw_party"  AS
 			, CASE WHEN("cdc_aft"."birthdate" = "cdc_bef"."birthdate")or("cdc_aft"."birthdate" IS NULL AND "cdc_bef"."birthdate" IS NULL)
 				THEN TO_DATE('01/01/1970', 'DD/MM/YYYY'::varchar) else "cdc_aft"."birthdate" end AS "birthdate"
 			, CASE WHEN("cdc_aft"."gender" = "cdc_bef"."gender")or("cdc_aft"."gender" IS NULL AND "cdc_bef"."gender" IS NULL)
-				THEN 'unchanged'::text else "cdc_aft"."gender" end AS "gender"
+				THEN'unchanged'::text else "cdc_aft"."gender" end AS "gender"
 			, CASE WHEN("cdc_aft"."party_type_code" = "cdc_bef"."party_type_code")or("cdc_aft"."party_type_code" IS NULL AND 
 				"cdc_bef"."party_type_code" IS NULL)THEN 'unchanged'::text else "cdc_aft"."party_type_code" end AS "party_type_code"
 			, CASE WHEN("cdc_aft"."comments" = "cdc_bef"."comments")or("cdc_aft"."comments" IS NULL AND "cdc_bef"."comments" IS NULL)
-				THEN 'unchanged'::text else "cdc_aft"."comments" end AS "comments"
+				THEN'unchanged'::text else "cdc_aft"."comments" end AS "comments"
 			, CASE WHEN("cdc_aft"."update_timestamp" = "cdc_bef"."update_timestamp")or("cdc_aft"."update_timestamp" IS NULL AND 
 				"cdc_bef"."update_timestamp" IS NULL)THEN TO_TIMESTAMP('01/01/1970 00:00:00', 'DD/MM/YYYY HH24:MI:SS.US'::varchar) else "cdc_aft"."update_timestamp" end AS "update_timestamp"
 		FROM "moto_mktg_scn01"."jrn_party" "cdc_aft"

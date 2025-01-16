@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -40,7 +40,7 @@ BEGIN -- sat_inr_tgt
 		, TO_TIMESTAMP('31/12/2399 23:59:59.000000' , 'DD/MM/YYYY HH24:MI:SS.US'::varchar) AS "load_end_date"
 		, "stg_inr_src"."load_cycle_id" AS "load_cycle_id"
 		, UPPER(ENCODE(DIGEST(COALESCE(RTRIM( UPPER(REPLACE(COALESCE(TRIM( "stg_inr_src"."name"),'~'),'#','\' || '#'))
-			|| '#','#' || '~'),'~') ,'MD5'),'HEX')) AS "hash_diff"
+			||'#','#' || '~'),'~') ,'MD5'),'HEX')) AS "hash_diff"
 		, 'N'::text AS "delete_flag"
 		, "stg_inr_src"."trans_timestamp" AS "trans_timestamp"
 		, "stg_inr_src"."contact_id" AS "contact_id"
@@ -126,7 +126,7 @@ BEGIN -- sat_temp_tgt
 		, "temp_table_set"."record_type" AS "record_type"
 		, "temp_table_set"."source" AS "source"
 		, CASE WHEN "temp_table_set"."source" = 'STG' AND "temp_table_set"."delete_flag"::text || "temp_table_set"."hash_diff"::text =
-			LAG( "temp_table_set"."delete_flag"::text || "temp_table_set"."hash_diff"::text,1)OVER(PARTITION BY "temp_table_set"."contacts_hkey" ORDER BY "temp_table_set"."load_date","temp_table_set"."origin_id")THEN 1 ELSE 0 END AS "equal"
+			LAG("temp_table_set"."delete_flag"::text || "temp_table_set"."hash_diff"::text,1)OVER(PARTITION BY "temp_table_set"."contacts_hkey" ORDER BY "temp_table_set"."load_date","temp_table_set"."origin_id")THEN 1 ELSE 0 END AS "equal"
 		, "temp_table_set"."hash_diff" AS "hash_diff"
 		, "temp_table_set"."delete_flag" AS "delete_flag"
 		, "temp_table_set"."trans_timestamp" AS "trans_timestamp"

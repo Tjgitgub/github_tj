@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:47:43
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:35:04
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:00:22
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:51:08
  */
 
 
@@ -71,7 +71,7 @@ BEGIN -- ext_tgt
 		SELECT 
 			  "lci_src"."load_cycle_id" AS "load_cycle_id"
 			, CURRENT_TIMESTAMP + row_number() over (PARTITION BY  "calculate_bk"."street_name_bk" ,  "calculate_bk"."street_number_bk" ,
-				  "calculate_bk"."postal_code_bk" ,  "calculate_bk"."city_bk"  ORDER BY  "calculate_bk"."trans_timestamp") * interval'2 microsecond'   AS "load_date"
+				"calculate_bk"."postal_code_bk" ,  "calculate_bk"."city_bk"  ORDER BY  "calculate_bk"."trans_timestamp") * interval'2 microsecond'   AS "load_date"
 			, "calculate_bk"."trans_timestamp" AS "trans_timestamp"
 			, "calculate_bk"."operation" AS "operation"
 			, "calculate_bk"."record_type" AS "record_type"

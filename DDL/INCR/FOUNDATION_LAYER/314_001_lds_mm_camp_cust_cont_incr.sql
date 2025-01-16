@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:48:54
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:37:51
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:01:59
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_mktg_scn01 - Release: moto_mktg_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:53:46
  */
 
 
@@ -62,7 +62,7 @@ BEGIN -- lds_inr_tgt
 		, "stg_dl_inr_src"."update_timestamp" AS "update_timestamp"
 	FROM "moto_mktg_scn01_stg"."camp_part_cont" "stg_dl_inr_src"
 	LEFT OUTER JOIN "moto_scn01_fl"."lds_mm_camp_cust_cont" "lds_inr_src" ON  "stg_dl_inr_src"."lnd_camp_cust_cont_hkey" = "lds_inr_src"."lnd_camp_cust_cont_hkey" AND "stg_dl_inr_src"."load_date" =
-		 "lds_inr_src"."load_date"
+		"lds_inr_src"."load_date"
 	WHERE  "stg_dl_inr_src"."operation" = 'I' AND "lds_inr_src"."lnd_camp_cust_cont_hkey" IS NULL AND "stg_dl_inr_src"."error_code_camp_cust_cont" = 0
 	;
 END;
@@ -187,7 +187,7 @@ BEGIN -- lds_temp_tgt
 		, "temp_table_set"."record_type" AS "record_type"
 		, "temp_table_set"."source" AS "source"
 		, CASE WHEN "temp_table_set"."source" = 'STG' AND "temp_table_set"."delete_flag"::text || "temp_table_set"."hash_diff"::text =
-			LAG( "temp_table_set"."delete_flag"::text || "temp_table_set"."hash_diff"::text,1)OVER(PARTITION BY "temp_table_set"."lnd_camp_cust_cont_hkey" ORDER BY "temp_table_set"."load_date","temp_table_set"."origin_id")THEN 1 ELSE 0 END AS "equal"
+			LAG("temp_table_set"."delete_flag"::text || "temp_table_set"."hash_diff"::text,1)OVER(PARTITION BY "temp_table_set"."lnd_camp_cust_cont_hkey" ORDER BY "temp_table_set"."load_date","temp_table_set"."origin_id")THEN 1 ELSE 0 END AS "equal"
 		, "temp_table_set"."delete_flag" AS "delete_flag"
 		, "temp_table_set"."trans_timestamp" AS "trans_timestamp"
 		, "temp_table_set"."marketing_program_code" AS "marketing_program_code"
