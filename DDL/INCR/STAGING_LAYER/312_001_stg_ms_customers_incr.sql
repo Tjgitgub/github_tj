@@ -11,10 +11,10 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:47:43
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36, 
-BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/09 09:40:46, 
-SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/09 09:35:04
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/17 07:04:17
+DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
+BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
+SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:51:08
  */
 
 
@@ -204,9 +204,9 @@ BEGIN -- stg_tgt
 			, "ext_src"."gender" AS "gender"
 			, "ext_src"."update_timestamp" AS "update_timestamp"
 			, CASE WHEN "ext_src"."error_code_cust_addr_iats" = 2 THEN 2 WHEN "ext_src"."error_code_cust_addr_iats" =
-				- 1 THEN 0 WHEN "find_bk_fk1"."customer_ship_to_address_id" IS NULL THEN "ext_src"."error_code_cust_addr_iats" ELSE 0 END AS "error_code_cust_addr_iats"
+				- 1 THEN 0 WHEN"find_bk_fk1"."customer_ship_to_address_id" IS NULL THEN "ext_src"."error_code_cust_addr_iats" ELSE 0 END AS "error_code_cust_addr_iats"
 			, CASE WHEN "ext_src"."error_code_cust_addr_ciai" = 2 THEN 2 WHEN "ext_src"."error_code_cust_addr_ciai" =
-				- 1 THEN 0 WHEN "find_bk_fk2"."customer_invoice_address_id" IS NULL THEN "ext_src"."error_code_cust_addr_ciai" ELSE 0 END AS "error_code_cust_addr_ciai"
+				- 1 THEN 0 WHEN"find_bk_fk2"."customer_invoice_address_id" IS NULL THEN "ext_src"."error_code_cust_addr_ciai" ELSE 0 END AS "error_code_cust_addr_ciai"
 		FROM "moto_sales_scn01_ext"."customers" "ext_src"
 		INNER JOIN "moto_sales_scn01_mtd"."mtd_exception_records" "mex_src" ON  "mex_src"."record_type" = 'U'
 		LEFT OUTER JOIN "find_bk_fk1" "find_bk_fk1" ON  "ext_src"."customer_ship_to_address_id" = "find_bk_fk1"."customer_ship_to_address_id"
@@ -274,7 +274,7 @@ BEGIN -- ext_err_tgt
 	)
 	SELECT 
 		  CASE WHEN "stg_err_src"."error_code_cust_addr_iats" = 1 OR  "stg_err_src"."error_code_cust_addr_ciai" =
-			1 THEN "stg_err_src"."load_date" + interval'1 microsecond'   ELSE "stg_err_src"."load_date" END AS "load_date"
+			1 THEN"stg_err_src"."load_date" + interval'1 microsecond'   ELSE "stg_err_src"."load_date" END AS "load_date"
 		, "stg_err_src"."load_cycle_id" AS "load_cycle_id"
 		, "stg_err_src"."trans_timestamp" AS "trans_timestamp"
 		, "stg_err_src"."operation" AS "operation"
