@@ -6,8 +6,8 @@
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.14, generation date: 2025/01/09 12:47:27
-DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/20 10:46:04
+DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14
  */
 
 /* DROP TABLES */
@@ -257,7 +257,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_addresses"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_addresses" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_addresses" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_campaigns"
@@ -272,7 +272,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_campaigns"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_campaigns" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_campaigns" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_channels"
@@ -286,7 +286,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_channels"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_channels" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_channels" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_contacts"
@@ -300,7 +300,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_contacts"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_contacts" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_contacts" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_customers"
@@ -315,7 +315,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_customers"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_customers" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_customers" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_invoice_lines"
@@ -330,7 +330,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_invoice_lines"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_invoice_lines" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_invoice_lines" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_invoices"
@@ -344,7 +344,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_invoices"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_invoices" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_invoices" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_parts"
@@ -359,7 +359,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_parts"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_parts" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_parts" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_prod_featu_class"
@@ -373,7 +373,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_prod_featu_class"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_prod_featu_class" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_prod_featu_class" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_product_features"
@@ -387,7 +387,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_product_features"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_product_features" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_product_features" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_products"
@@ -404,7 +404,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_products"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_products" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_products" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_product_sensors"
@@ -418,7 +418,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_product_sensors"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_product_sensors" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_product_sensors" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."hub_produ_featur_cat"
@@ -432,7 +432,7 @@ CREATE   TABLE "moto_scn01_fl"."hub_produ_featur_cat"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."hub_produ_featur_cat" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."hub_produ_featur_cat" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_mm_addresses"
@@ -455,7 +455,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_mm_addresses"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_mm_addresses" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_mm_addresses" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_mm_campaigns"
@@ -475,7 +475,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_mm_campaigns"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_mm_campaigns" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_mm_campaigns" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_mm_channels"
@@ -494,7 +494,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_mm_channels"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_mm_channels" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_mm_channels" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_mm_contacts"
@@ -514,7 +514,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_mm_contacts"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_mm_contacts" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_mm_contacts" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_mm_customers"
@@ -539,7 +539,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_mm_customers"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_mm_customers" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_mm_customers" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_mm_e_mails"
@@ -558,7 +558,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_mm_e_mails"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_mm_e_mails" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_mm_e_mails" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_mm_phones"
@@ -577,7 +577,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_mm_phones"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_mm_phones" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_mm_phones" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_mm_products"
@@ -596,7 +596,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_mm_products"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_mm_products" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_mm_products" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_ms_addresses"
@@ -619,7 +619,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_ms_addresses"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_ms_addresses" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_ms_addresses" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_ms_customers_birth"
@@ -639,7 +639,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_ms_customers_birth"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_ms_customers_birth" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_ms_customers_birth" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_ms_customers_name"
@@ -661,7 +661,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_ms_customers_name"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_ms_customers_name" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_ms_customers_name" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_ms_invoice_lines"
@@ -683,7 +683,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_ms_invoice_lines"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_ms_invoice_lines" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_ms_invoice_lines" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_ms_invoices"
@@ -704,7 +704,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_ms_invoices"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_ms_invoices" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_ms_invoices" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_ms_parts"
@@ -726,7 +726,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_ms_parts"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_ms_parts" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_ms_parts" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_ms_prod_featu_class"
@@ -745,7 +745,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_ms_prod_featu_class"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_ms_prod_featu_class" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_ms_prod_featu_class" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_ms_product_features"
@@ -767,7 +767,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_ms_product_features"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_ms_product_features" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_ms_product_features" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_ms_products"
@@ -787,7 +787,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_ms_products"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_ms_products" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_ms_products" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_ms_product_sensors"
@@ -807,7 +807,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_ms_product_sensors"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_ms_product_sensors" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_ms_product_sensors" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."sat_ms_produ_featur_cat"
@@ -829,7 +829,7 @@ CREATE   TABLE "moto_scn01_fl"."sat_ms_produ_featur_cat"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."sat_ms_produ_featur_cat" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."sat_ms_produ_featur_cat" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnk_cust_addr"
@@ -844,7 +844,7 @@ CREATE   TABLE "moto_scn01_fl"."lnk_cust_addr"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnk_cust_addr" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnk_cust_addr" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnk_cust_addr_ciai"
@@ -859,7 +859,7 @@ CREATE   TABLE "moto_scn01_fl"."lnk_cust_addr_ciai"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnk_cust_addr_ciai" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnk_cust_addr_ciai" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnk_cust_addr_iats"
@@ -874,7 +874,7 @@ CREATE   TABLE "moto_scn01_fl"."lnk_cust_addr_iats"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnk_cust_addr_iats" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnk_cust_addr_iats" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnk_cust_cust_parentpartynumber"
@@ -889,7 +889,7 @@ CREATE   TABLE "moto_scn01_fl"."lnk_cust_cust_parentpartynumber"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnk_cust_cust_parentpartynumber" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnk_cust_cust_parentpartynumber" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnk_inli_invo"
@@ -904,7 +904,7 @@ CREATE   TABLE "moto_scn01_fl"."lnk_inli_invo"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnk_inli_invo" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnk_inli_invo" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnk_inli_part"
@@ -919,7 +919,7 @@ CREATE   TABLE "moto_scn01_fl"."lnk_inli_part"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnk_inli_part" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnk_inli_part" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnk_inli_prod"
@@ -934,7 +934,7 @@ CREATE   TABLE "moto_scn01_fl"."lnk_inli_prod"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnk_inli_prod" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnk_inli_prod" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnk_invo_cust"
@@ -949,7 +949,7 @@ CREATE   TABLE "moto_scn01_fl"."lnk_invo_cust"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnk_invo_cust" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnk_invo_cust" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnk_prfe_pfca"
@@ -964,7 +964,7 @@ CREATE   TABLE "moto_scn01_fl"."lnk_prfe_pfca"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnk_prfe_pfca" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnk_prfe_pfca" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnk_prod_prod_rpid"
@@ -979,7 +979,7 @@ CREATE   TABLE "moto_scn01_fl"."lnk_prod_prod_rpid"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnk_prod_prod_rpid" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnk_prod_prod_rpid" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnk_prse_prod"
@@ -994,7 +994,7 @@ CREATE   TABLE "moto_scn01_fl"."lnk_prse_prod"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnk_prse_prod" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnk_prse_prod" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lks_mm_cust_addr"
@@ -1013,7 +1013,7 @@ CREATE   TABLE "moto_scn01_fl"."lks_mm_cust_addr"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lks_mm_cust_addr" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lks_mm_cust_addr" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lks_mm_cust_cust_parentpartynumber"
@@ -1032,7 +1032,7 @@ CREATE   TABLE "moto_scn01_fl"."lks_mm_cust_cust_parentpartynumber"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lks_mm_cust_cust_parentpartynumber" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lks_mm_cust_cust_parentpartynumber" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lks_ms_cust_addr_ciai"
@@ -1051,7 +1051,7 @@ CREATE   TABLE "moto_scn01_fl"."lks_ms_cust_addr_ciai"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lks_ms_cust_addr_ciai" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lks_ms_cust_addr_ciai" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lks_ms_cust_addr_iats"
@@ -1070,7 +1070,7 @@ CREATE   TABLE "moto_scn01_fl"."lks_ms_cust_addr_iats"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lks_ms_cust_addr_iats" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lks_ms_cust_addr_iats" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lks_ms_inli_invo"
@@ -1089,7 +1089,7 @@ CREATE   TABLE "moto_scn01_fl"."lks_ms_inli_invo"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lks_ms_inli_invo" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lks_ms_inli_invo" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lks_ms_inli_part"
@@ -1109,7 +1109,7 @@ CREATE   TABLE "moto_scn01_fl"."lks_ms_inli_part"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lks_ms_inli_part" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lks_ms_inli_part" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lks_ms_inli_prod"
@@ -1129,7 +1129,7 @@ CREATE   TABLE "moto_scn01_fl"."lks_ms_inli_prod"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lks_ms_inli_prod" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lks_ms_inli_prod" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lks_ms_invo_cust"
@@ -1148,7 +1148,7 @@ CREATE   TABLE "moto_scn01_fl"."lks_ms_invo_cust"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lks_ms_invo_cust" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lks_ms_invo_cust" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lks_ms_prfe_pfca"
@@ -1167,7 +1167,7 @@ CREATE   TABLE "moto_scn01_fl"."lks_ms_prfe_pfca"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lks_ms_prfe_pfca" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lks_ms_prfe_pfca" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lks_ms_prod_prod_rpid"
@@ -1186,7 +1186,7 @@ CREATE   TABLE "moto_scn01_fl"."lks_ms_prod_prod_rpid"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lks_ms_prod_prod_rpid" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lks_ms_prod_prod_rpid" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lks_ms_prse_prod"
@@ -1204,7 +1204,7 @@ CREATE   TABLE "moto_scn01_fl"."lks_ms_prse_prod"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lks_ms_prse_prod" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lks_ms_prse_prod" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnd_camp_cust_cont"
@@ -1220,7 +1220,7 @@ CREATE   TABLE "moto_scn01_fl"."lnd_camp_cust_cont"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnd_camp_cust_cont" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnd_camp_cust_cont" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnd_camp_moto_channel"
@@ -1235,7 +1235,7 @@ CREATE   TABLE "moto_scn01_fl"."lnd_camp_moto_channel"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnd_camp_moto_channel" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnd_camp_moto_channel" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnd_camp_moto_chan_region"
@@ -1251,7 +1251,7 @@ CREATE   TABLE "moto_scn01_fl"."lnd_camp_moto_chan_region"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnd_camp_moto_chan_region" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnd_camp_moto_chan_region" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnd_camp_prod"
@@ -1266,7 +1266,7 @@ CREATE   TABLE "moto_scn01_fl"."lnd_camp_prod"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnd_camp_prod" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnd_camp_prod" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnd_cust_addresses"
@@ -1281,7 +1281,7 @@ CREATE   TABLE "moto_scn01_fl"."lnd_cust_addresses"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnd_cust_addresses" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnd_cust_addresses" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnd_cust_cont"
@@ -1296,7 +1296,7 @@ CREATE   TABLE "moto_scn01_fl"."lnd_cust_cont"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnd_cust_cont" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnd_cust_cont" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lnd_pro_fea_clas_rel"
@@ -1312,7 +1312,7 @@ CREATE   TABLE "moto_scn01_fl"."lnd_pro_fea_clas_rel"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lnd_pro_fea_clas_rel" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lnd_pro_fea_clas_rel" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lds_mm_camp_cust_cont"
@@ -1338,7 +1338,7 @@ CREATE   TABLE "moto_scn01_fl"."lds_mm_camp_cust_cont"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lds_mm_camp_cust_cont" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lds_mm_camp_cust_cont" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lds_mm_camp_moto_channel"
@@ -1362,11 +1362,11 @@ CREATE   TABLE "moto_scn01_fl"."lds_mm_camp_moto_channel"
    ,"campaign_start_date" DATE
    ,"valid_to_date" TIMESTAMP(6)
    ,"from_date_seq" TIMESTAMP(6) NOT NULL
-   ,CONSTRAINT "lds_mm_campmotochannel_uk" UNIQUE ("lnd_camp_moto_channel_hkey", "from_date_seq", "load_date")   
+   ,CONSTRAINT "lds_mm_campmotochannel_uk" UNIQUE ("lnd_camp_moto_channel_hkey", "load_date", "from_date_seq")   
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lds_mm_camp_moto_channel" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lds_mm_camp_moto_channel" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lds_mm_camp_moto_chan_region"
@@ -1386,11 +1386,11 @@ CREATE   TABLE "moto_scn01_fl"."lds_mm_camp_moto_chan_region"
    ,"update_timestamp" TIMESTAMP(6)
    ,"campaign_start_date" DATE
    ,"motorcycle_id" NUMERIC(16)
-   ,CONSTRAINT "lds_mm_campmotochanregion_uk" UNIQUE ("lnd_camp_moto_chan_region_hkey", "region_seq", "load_date")   
+   ,CONSTRAINT "lds_mm_campmotochanregion_uk" UNIQUE ("lnd_camp_moto_chan_region_hkey", "load_date", "region_seq")   
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lds_mm_camp_moto_chan_region" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lds_mm_camp_moto_chan_region" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lds_mm_camp_prod_class"
@@ -1414,7 +1414,7 @@ CREATE   TABLE "moto_scn01_fl"."lds_mm_camp_prod_class"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lds_mm_camp_prod_class" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lds_mm_camp_prod_class" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lds_mm_camp_prod_emo"
@@ -1438,7 +1438,7 @@ CREATE   TABLE "moto_scn01_fl"."lds_mm_camp_prod_emo"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lds_mm_camp_prod_emo" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lds_mm_camp_prod_emo" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lds_mm_cust_cont"
@@ -1459,7 +1459,7 @@ CREATE   TABLE "moto_scn01_fl"."lds_mm_cust_cont"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lds_mm_cust_cont" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lds_mm_cust_cont" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lds_ms_cust_addresses"
@@ -1477,11 +1477,11 @@ CREATE   TABLE "moto_scn01_fl"."lds_ms_cust_addresses"
    ,"update_timestamp" TIMESTAMP(6)
    ,"address_number" NUMERIC(16)
    ,"address_type_seq" VARCHAR NOT NULL
-   ,CONSTRAINT "lds_ms_custaddresses_uk" UNIQUE ("lnd_cust_addresses_hkey", "address_type_seq", "load_date")   
+   ,CONSTRAINT "lds_ms_custaddresses_uk" UNIQUE ("lnd_cust_addresses_hkey", "load_date", "address_type_seq")   
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lds_ms_cust_addresses" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lds_ms_cust_addresses" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."lds_ms_pro_fea_clas_rel"
@@ -1503,7 +1503,7 @@ CREATE   TABLE "moto_scn01_fl"."lds_ms_pro_fea_clas_rel"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."lds_ms_pro_fea_clas_rel" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."lds_ms_pro_fea_clas_rel" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."ref_ms_codes_to_languag"
@@ -1518,7 +1518,7 @@ CREATE   TABLE "moto_scn01_fl"."ref_ms_codes_to_languag"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."ref_ms_codes_to_languag" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."ref_ms_codes_to_languag" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_bv"."lna_cust_addr"
@@ -1533,7 +1533,7 @@ CREATE   TABLE "moto_scn01_bv"."lna_cust_addr"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_bv"."lna_cust_addr" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_bv"."lna_cust_addr" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_bv"."las_mm_cust_addr"
@@ -1552,7 +1552,7 @@ CREATE   TABLE "moto_scn01_bv"."las_mm_cust_addr"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_bv"."las_mm_cust_addr" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_bv"."las_mm_cust_addr" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_bv"."las_mm_cust_addr_tmp"
@@ -1572,7 +1572,7 @@ CREATE   TABLE "moto_scn01_bv"."las_mm_cust_addr_tmp"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_bv"."las_mm_cust_addr_tmp" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_bv"."las_mm_cust_addr_tmp" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 CREATE   TABLE "moto_scn01_fl"."nhl_ms_payments"
@@ -1593,7 +1593,7 @@ CREATE   TABLE "moto_scn01_fl"."nhl_ms_payments"
 )
 ;
 
-COMMENT ON TABLE "moto_scn01_fl"."nhl_ms_payments" IS 'DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/09 09:38:36';
+COMMENT ON TABLE "moto_scn01_fl"."nhl_ms_payments" IS 'DV_NAME: moto_scn01 - Release: 2(2) - Comment: 2 - Release date: 2025/01/20 10:43:14';
 
 
 -- END
