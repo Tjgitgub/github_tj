@@ -11,7 +11,7 @@ AS $function$
     \_/ \__,_|\__,_|_|\__|___/ .__/ \___|\___|\__,_|     /_/ \/_/\__/       
                              |_|                                            
 
-Vaultspeed version: 5.7.2.16, generation date: 2025/01/16 15:03:29
+Vaultspeed version: 5.7.2.16, generation date: 2025/01/18 14:08:56
 DV_NAME: moto_scn01 - Release: R1(1) - Comment: VaultSpeed setup automation - Release date: 2025/01/16 14:54:27, 
 BV release: release1(2) - Comment: VaultSpeed Automation - Release date: 2025/01/16 14:56:23, 
 SRC_NAME: moto_sales_scn01 - Release: moto_sales_scn01(1) - Comment: VaultSpeed automated setup - Release date: 2025/01/16 14:51:08
@@ -31,16 +31,6 @@ BEGIN -- pit_upd
 		INNER JOIN "moto_scn01_fmc"."fmc_bv_loading_window_table" "bvlwt_src_upd" ON  1 = 1
 		WHERE  "ssdv_src_upd"."snapshot_timestamp" >= "bvlwt_src_upd"."fmc_begin_lw_timestamp"
 	)
-	, "sat_src_upd1" AS 
-	( 
-		SELECT 
-			  "sat_ed_src_upd1"."lnd_camp_prod_hkey" AS "lnd_camp_prod_hkey"
-			, "sat_ed_src_upd1"."trans_timestamp" AS "load_date"
-			, COALESCE(LEAD("sat_ed_src_upd1"."trans_timestamp")OVER(PARTITION BY "sat_ed_src_upd1"."lnd_camp_prod_hkey" ORDER BY "sat_ed_src_upd1"."trans_timestamp")
-				, TO_TIMESTAMP('31/12/2399 23:59:59.000000' , 'DD/MM/YYYY HH24:MI:SS.US'::varchar)) AS "load_end_date"
-			, "sat_ed_src_upd1"."delete_flag" AS "delete_flag"
-		FROM "moto_scn01_fl"."lds_mm_camp_prod_class" "sat_ed_src_upd1"
-	)
 	, "sat_src_upd2" AS 
 	( 
 		SELECT 
@@ -50,6 +40,16 @@ BEGIN -- pit_upd
 				, TO_TIMESTAMP('31/12/2399 23:59:59.000000' , 'DD/MM/YYYY HH24:MI:SS.US'::varchar)) AS "load_end_date"
 			, "sat_ed_src_upd2"."delete_flag" AS "delete_flag"
 		FROM "moto_scn01_fl"."lds_mm_camp_prod_emo" "sat_ed_src_upd2"
+	)
+	, "sat_src_upd1" AS 
+	( 
+		SELECT 
+			  "sat_ed_src_upd1"."lnd_camp_prod_hkey" AS "lnd_camp_prod_hkey"
+			, "sat_ed_src_upd1"."trans_timestamp" AS "load_date"
+			, COALESCE(LEAD("sat_ed_src_upd1"."trans_timestamp")OVER(PARTITION BY "sat_ed_src_upd1"."lnd_camp_prod_hkey" ORDER BY "sat_ed_src_upd1"."trans_timestamp")
+				, TO_TIMESTAMP('31/12/2399 23:59:59.000000' , 'DD/MM/YYYY HH24:MI:SS.US'::varchar)) AS "load_end_date"
+			, "sat_ed_src_upd1"."delete_flag" AS "delete_flag"
+		FROM "moto_scn01_fl"."lds_mm_camp_prod_class" "sat_ed_src_upd1"
 	)
 	, "miv_upd" AS 
 	( 
@@ -124,16 +124,6 @@ BEGIN -- pit_tgt
 		INNER JOIN "moto_scn01_fmc"."fmc_bv_loading_window_table" "bvlwt_src" ON  1 = 1
 		WHERE  "ssdv_src"."snapshot_timestamp" >= "bvlwt_src"."fmc_begin_lw_timestamp"
 	)
-	, "sat_src1" AS 
-	( 
-		SELECT 
-			  "sat_ed_src1"."lnd_camp_prod_hkey" AS "lnd_camp_prod_hkey"
-			, "sat_ed_src1"."trans_timestamp" AS "load_date"
-			, COALESCE(LEAD("sat_ed_src1"."trans_timestamp")OVER(PARTITION BY "sat_ed_src1"."lnd_camp_prod_hkey" ORDER BY "sat_ed_src1"."trans_timestamp")
-				, TO_TIMESTAMP('31/12/2399 23:59:59.000000' , 'DD/MM/YYYY HH24:MI:SS.US'::varchar)) AS "load_end_date"
-			, "sat_ed_src1"."delete_flag" AS "delete_flag"
-		FROM "moto_scn01_fl"."lds_mm_camp_prod_class" "sat_ed_src1"
-	)
 	, "sat_src2" AS 
 	( 
 		SELECT 
@@ -143,6 +133,16 @@ BEGIN -- pit_tgt
 				, TO_TIMESTAMP('31/12/2399 23:59:59.000000' , 'DD/MM/YYYY HH24:MI:SS.US'::varchar)) AS "load_end_date"
 			, "sat_ed_src2"."delete_flag" AS "delete_flag"
 		FROM "moto_scn01_fl"."lds_mm_camp_prod_emo" "sat_ed_src2"
+	)
+	, "sat_src1" AS 
+	( 
+		SELECT 
+			  "sat_ed_src1"."lnd_camp_prod_hkey" AS "lnd_camp_prod_hkey"
+			, "sat_ed_src1"."trans_timestamp" AS "load_date"
+			, COALESCE(LEAD("sat_ed_src1"."trans_timestamp")OVER(PARTITION BY "sat_ed_src1"."lnd_camp_prod_hkey" ORDER BY "sat_ed_src1"."trans_timestamp")
+				, TO_TIMESTAMP('31/12/2399 23:59:59.000000' , 'DD/MM/YYYY HH24:MI:SS.US'::varchar)) AS "load_end_date"
+			, "sat_ed_src1"."delete_flag" AS "delete_flag"
+		FROM "moto_scn01_fl"."lds_mm_camp_prod_class" "sat_ed_src1"
 	)
 	, "miv" AS 
 	( 
